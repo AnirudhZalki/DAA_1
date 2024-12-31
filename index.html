@@ -81,45 +81,6 @@
             font-size: 0.9em;
         }
     </style>
-   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const navLinks = document.querySelectorAll('nav a');
-
-        navLinks.forEach(link => {
-            const href = link.getAttribute('href');
-
-            // Skip adding scrolling behavior for external links
-            if (href.startsWith('#')) {
-                link.addEventListener('click', event => {
-                    event.preventDefault();
-                    const targetId = href.substring(1);
-                    const targetElement = document.getElementById(targetId);
-                    if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - document.querySelector('nav').offsetHeight,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            }
-        });
-
-        window.addEventListener('scroll', () => {
-            const scrollPosition = window.scrollY + document.querySelector('nav').offsetHeight + 20;
-            navLinks.forEach(link => {
-                const section = document.querySelector(link.getAttribute('href'));
-                if (section && section.offsetTop <= scrollPosition && 
-                    section.offsetTop + section.offsetHeight > scrollPosition) {
-                    link.classList.add('active');
-                } else {
-                    link.classList.remove('active');
-                }
-            });
-        });
-    });
-</script>
-
-
 </head>
 <body>
     <header>
